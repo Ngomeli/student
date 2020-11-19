@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="437.0" prefWidth="649.0" style="-fx-background-color: #0f3057;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="225.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="224.0">
+               <image>
+                  <Image url="@images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="186.0" layoutY="102.0" text="STUDENT MANAGEMENT SYSTEM" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Contact.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="186.0" layoutY="145.0" text="Search" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtSearch" layoutX="251.0" layoutY="141.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="186.0" layoutY="185.0" text="Name" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtName" layoutX="251.0" layoutY="181.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="186.0" layoutY="219.0" text="Gender" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="spGender" layoutX="251.0" layoutY="215.0" prefHeight="25.0" prefWidth="119.0" />
+            <Label layoutX="186.0" layoutY="257.0" text="Address" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAddress" layoutX="251.0" layoutY="253.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="397.0" layoutY="145.0" text="ADMNO" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtAdmno" layoutX="458.0" layoutY="141.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="397.0" layoutY="185.0" text="DOB" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtPhone" layoutX="458.0" layoutY="253.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label layoutX="397.0" layoutY="219.0" text="Major" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="spMajor" layoutX="458.0" layoutY="215.0" prefHeight="25.0" prefWidth="119.0" />
+            <Label layoutX="397.0" layoutY="257.0" text="Phone" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnSearch" layoutX="112.0" layoutY="339.0" mnemonicParsing="false" onAction="#onBtnSearchAction" style="-fx-background-color: #25AAE1;" text="SEARCH" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnAdd" layoutX="283.0" layoutY="339.0" mnemonicParsing="false" onAction="#onBtnAddAction" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #25AAE1;" text="ADD " textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnUpdate" layoutX="111.0" layoutY="393.0" mnemonicParsing="false" onAction="#onBtnUpdateAction" style="-fx-background-color: #25AAE1;" text="UPDATE " textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" layoutX="283.0" layoutY="393.0" mnemonicParsing="false" onAction="#onBtnDeleteAction" style="-fx-background-color: #25AAE1;" text="DELETE " textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnClear" layoutX="485.0" layoutY="339.0" mnemonicParsing="false" onAction="#onBtnClearAction" style="-fx-background-color: #25AAE1;" text="CLEAR" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnExit" layoutX="485.0" layoutY="393.0" mnemonicParsing="false" onAction="#onBtnExitAction" prefHeight="27.0" prefWidth="69.0" style="-fx-background-color: #25AAE1;" text="EXIT" textFill="WHITE">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="cal" layoutX="458.0" layoutY="181.0" prefHeight="25.0" prefWidth="105.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
