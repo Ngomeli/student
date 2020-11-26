@@ -9,6 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 
@@ -42,6 +45,30 @@ public class Controller implements Initializable {
     @FXML
     private Button btnExit;
 
+
+    ObservableList<String> majorList = FXCollections.observableArrayList("ACS", "MIS", "LAW");
+    SpinnerValueFactory<String> majorFactory = new SpinnerValueFactory.ListSpinnerValueFactory<>(majorList);
+
+    ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female", "Other");
+    SpinnerValueFactory<String> genderFactory = new SpinnerValueFactory.ListSpinnerValueFactory<>(genderList);
+
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        spMajor.setValueFactory(majorFactory);
+        majorFactory.setValue("Specify Major");
+
+
+        spGender.setValueFactory(genderFactory);
+        genderFactory.setValue("Specify Gender");
+    }
+
+    public Controller() throws SQLException {
+    }
+
     public void onBtnSearchAction(ActionEvent actionEvent) {
     }
 
@@ -51,7 +78,21 @@ public class Controller implements Initializable {
     public void onBtnUpdateAction(ActionEvent actionEvent) {
     }
 
-    public void onBtnDeleteAction(ActionEvent actionEvent) {
+    public void onBtnDeleteAction(ActionEvent actionEvent) throws SQLException {
+        myConnection connection = new myConnection();
+        Connection con;
+
+        {
+            try {
+                con = connection.getConnection();
+                PreparedStatement delete = con.prepareStatement("delete from student where admno=?");
+                delete.setString(1, "18-1112");
+                delete.execute();
+            } catch (Exception d) {
+                System.out.println("Error " + d.getMessage());
+            }
+        }
+
     }
 
     public void onBtnClearAction(ActionEvent actionEvent) {
@@ -66,21 +107,5 @@ public class Controller implements Initializable {
 
     public void onBtnExitAction(ActionEvent actionEvent) {
         System.exit(0);
-    }
-    ObservableList<String> majorList = FXCollections.observableArrayList("ACS", "MIS", "LAW");
-    SpinnerValueFactory<String> majorFactory = new SpinnerValueFactory.ListSpinnerValueFactory<>(majorList);
-
-    ObservableList<String> genderList = FXCollections.observableArrayList("Male", "Female", "Other");
-    SpinnerValueFactory<String> genderFactory = new SpinnerValueFactory.ListSpinnerValueFactory<>(genderList);
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
-        spMajor.setValueFactory(majorFactory);
-        majorFactory.setValue("Specify Major");
-
-
-        spGender.setValueFactory(genderFactory);
-        genderFactory.setValue("Specify Gender");
     }
 }
