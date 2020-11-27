@@ -107,7 +107,12 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
             </Button>
-            <DatePicker fx:id="cal" layoutX="458.0" layoutY="181.0" prefHeight="25.0" prefWidth="105.0" />
+            <DatePicker fx:id="calDOB" layoutX="458.0" layoutY="181.0" prefHeight="25.0" prefWidth="105.0" />
+            <Label fx:id="statusCheck" layoutX="327.0" layoutY="296.0" text="Status" textFill="#25aae1">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
