@@ -76,7 +76,30 @@ public class Controller implements Initializable {
     }
 
     public void onBtnAddAction(ActionEvent actionEvent) {
-        //INSERT INTO tablename (column....) VALUES(???)
+        myConnection connection = new myConnection();
+        Connection con;
+        {
+            try{
+                con = connection.getConnection();
+                try (PreparedStatement add = con.prepareStatement("insert into student(sname,gender,admno,dob,major,address,phoneno) values(sname=?,gender=?,admno=?,dob=?,major=?,address=?,phoneno=?)")) {
+                    add.setString(1, txtName.getText());
+                    add.setString(2, spGender.getValue());
+                    add.setString(3, txtAdmno.getText());
+                    add.setString(4, String.valueOf(calDOB.getValue()));
+                    add.setString(5, spMajor.getValue());
+                    add.setString(6, txtAddress.getText());
+                    add.setString(7, txtPhone.getText());
+                    add.executeUpdate();
+                    if (add.executeUpdate() == 0) {
+                        statusCheck.setText("Error");
+                    } else {
+                        statusCheck.setText("Success");
+                    }
+                }
+            }catch (Exception d) {
+                System.out.println("Error " + d.getMessage());
+            }
+        }
     }
 
     public void onBtnUpdateAction(ActionEvent actionEvent) {
