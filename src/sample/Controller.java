@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -66,20 +67,41 @@ public class Controller implements Initializable {
     }
 
 
-
-    public void onBtnSearchAction(ActionEvent actionEvent) {/*
+    public void onBtnSearchAction(ActionEvent actionEvent) {
+        /*
     SELECT * FROM tablename = WHERE ADMNO=?
     ResultSet rs = search.updateQuery();
     while(rs.next()){
 
    */
+        myConnection connection = new myConnection();
+        Connection con;
+        {
+            try {
+                con = connection.getConnection();
+                PreparedStatement search = con.prepareStatement("SELECT * FROM student WHERE admno=?");
+                search.setString(1, txtAdmno.getText());
+                ResultSet rs = search.executeQuery();
+                while (rs.next()) {
+                    search.setString(2, txtName.getText());
+                    search.setString(3, spGender.getValue());
+                    search.setString(4, String.valueOf(calDOB.getValue()));
+                    search.setString(5, spMajor.getValue());
+                    search.setString(6, txtAddress.getText());
+                    search.setString(7, txtPhone.getText());
+                }
+
+            } catch (Exception d) {
+                System.out.println("Error " + d.getMessage());
+            }
+        }
     }
 
     public void onBtnAddAction(ActionEvent actionEvent) {
         myConnection connection = new myConnection();
         Connection con;
         {
-            try{
+            try {
                 con = connection.getConnection();
                 try (PreparedStatement add = con.prepareStatement("insert into student(sname,gender,admno,dob,major,address,phoneno) values(sname=?,gender=?,admno=?,dob=?,major=?,address=?,phoneno=?)")) {
                     add.setString(1, txtName.getText());
@@ -96,7 +118,7 @@ public class Controller implements Initializable {
                         statusCheck.setText("Success");
                     }
                 }
-            }catch (Exception d) {
+            } catch (Exception d) {
                 System.out.println("Error " + d.getMessage());
             }
         }
@@ -118,9 +140,9 @@ public class Controller implements Initializable {
                 update.setString(6, txtPhone.getText());
                 update.setString(7, txtAdmno.getText());
                 update.executeUpdate();
-                if(update.executeUpdate()==0){
-                 statusCheck.setText("Error");
-                }else {
+                if (update.executeUpdate() == 0) {
+                    statusCheck.setText("Error");
+                } else {
                     statusCheck.setText("Success");
                 }
             } catch (Exception d) {
